@@ -39,8 +39,8 @@ public final class EnumUtils
 	}
 
 	/**
-	 * Returns the enum constant matching the given name, or null, if it didn't match any of the elements. This method will
-	 * never throw any exceptions, as long as valid arguments are passed to it.
+	 * Returns the enum constant matching the given name, or null, if it didn't match any of the elements. This
+	 * method will never throw any exceptions, as long as valid arguments are passed to it.
 	 *
 	 * @param enumType	  The enum type with the constants to scan.
 	 * @param name		  The name of the enum constant to find.
@@ -49,7 +49,9 @@ public final class EnumUtils
 	 *
 	 * @return An enum constant matching the given name, or <code>null</code>.
 	 */
-	public static <T extends Enum<T>> T valueOf(final Class<T> enumType, final String name, final boolean caseSensitive)
+	public static <T extends Enum<T>> T valueOf(final Class<T> enumType,
+												final String name,
+												final boolean caseSensitive)
 	{
 		Assert.notNull(enumType, "enumType");
 		Assert.hasText(name, "name");

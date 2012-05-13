@@ -37,8 +37,13 @@ public class Assert
 		{
 			if (previousType != null && !type.equals(previousType))
 			{
-				throw new IllegalArgumentException(
-						"The given objects should be either null or of the same type ('" + previousType + "') = " + types);
+				final String message = new StringBuilder()
+						.append("The given objects should be either null or of the same type ('")
+						.append(previousType)
+						.append("') = ")
+						.append(types)
+						.toString();
+				throw new IllegalArgumentException(message);
 			}
 			previousType = type;
 		}
@@ -69,12 +74,13 @@ public class Assert
 	 * @param value The value to check.
 	 * @param name  The name of the variable (used for the exception message).
 	 *
-	 * @throws IllegalArgumentException If the given value is <code>null</code> or doesn't contain any non-whitespace
-	 *                                  characters.
+	 * @throws IllegalArgumentException If the given value is <code>null</code> or doesn't contain any
+	 *                                  non-whitespace characters.
 	 */
 	public static void hasText(final String value, final String name) throws IllegalArgumentException
 	{
-		if (StringUtils.isEmpty(name)) // Yo dawg, I heard you like assertions, so I put an assertion in your assertion
+		if (StringUtils.isEmpty(
+				name)) // Yo dawg, I heard you like assertions, so I put an assertion in your assertion
 		{
 			throw new IllegalArgumentException("'name' must not be null or empty");
 		}
@@ -147,20 +153,26 @@ public class Assert
 		return value;
 	}
 
-	public static int between(final int value, final int min, final int max, final boolean inclusive, final String name)
+	public static int between(final int value,
+							  final int min,
+							  final int max,
+							  final boolean inclusive,
+							  final String name)
 	{
 		if (inclusive)
 		{
 			if (value < min || value > max)
 			{
-				throw escalate("Argument [%s] must be between %d and %d (%s) - was: %d", name, min, max, "inclusive", value);
+				throw escalate("Argument [%s] must be between %d and %d (%s) - was: %d", name, min, max,
+						"inclusive", value);
 			}
 		}
 		else
 		{
 			if (value <= min || value >= max)
 			{
-				throw escalate("Argument [%s] must be between %d and %d (%s) - was: %d", name, min, max, "exclusive", value);
+				throw escalate("Argument [%s] must be between %d and %d (%s) - was: %d", name, min, max,
+						"exclusive", value);
 			}
 		}
 		return value;

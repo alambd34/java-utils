@@ -20,7 +20,8 @@ import java.util.*;
 /** @author Daniel Bechler */
 final class RandomSequenceGenerator
 {
-	public static final String DEFAULT_ALPHABET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+	public static final String DEFAULT_ALPHABET =
+			"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
 	private RandomSequenceGenerator()
 	{

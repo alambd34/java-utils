@@ -15,7 +15,7 @@
  */
 package de.danielbechler.util.codec;
 
-import de.danielbechler.util.text.StringUtils;
+import de.danielbechler.util.text.*;
 
 /** @author Daniel Bechler */
 public final class MD5

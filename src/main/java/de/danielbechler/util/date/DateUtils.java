@@ -44,8 +44,8 @@ public final class DateUtils
 	}
 
 	/**
-	 * Creates an (almost) ISO 8601 compliant {@link java.text.DateFormat} using the UTC time zone. It takes the liberty to add
-	 * the milliseconds to the formatted string.
+	 * Creates an (almost) ISO 8601 compliant {@link java.text.DateFormat} using the UTC time zone. It takes the
+	 * liberty to add the milliseconds to the formatted string.
 	 * <p/>
 	 * Example: 2012-05-13T14:56:15.123Z
 	 *

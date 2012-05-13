@@ -16,11 +16,17 @@
 
 package de.danielbechler.util.url;
 
-import de.danielbechler.util.text.StringUtils;
+import de.danielbechler.util.text.*;
 
-import java.io.UnsupportedEncodingException;import java.lang.IllegalArgumentException;import java.lang.Iterable;import java.lang.Override;import java.lang.String;import java.lang.StringBuilder;
-import java.net.URLEncoder;
-import java.nio.charset.Charset;import java.util.Iterator;import java.util.Map;import java.util.TreeMap;import java.util.TreeSet;
+import java.io.*;
+import java.lang.IllegalArgumentException;
+import java.lang.Iterable;
+import java.lang.Override;
+import java.lang.String;
+import java.lang.StringBuilder;
+import java.net.*;
+import java.nio.charset.*;
+import java.util.*;
 
 /** @author Daniel Bechler */
 public final class UrlParameters
@@ -96,7 +102,9 @@ public final class UrlParameters
 		return sb.toString();
 	}
 
-	private static String encodedKeyValueStringOf(final String name, final String value, final Charset charset)
+	private static String encodedKeyValueStringOf(final String name,
+												  final String value,
+												  final Charset charset)
 	{
 		final String encodedValue;
 		if (StringUtils.hasText(value))

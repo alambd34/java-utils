@@ -59,7 +59,8 @@ public final class ClassUtils
 		}
 		catch (NoSuchMethodException e)
 		{
-			logger.warn("Couldn't find default constructor of type {}. Assuming 'null' is default.", clazz.getName());
+			logger.warn("Couldn't find default constructor of type {}. Assuming 'null' is default.",
+					clazz.getName());
 		}
 		catch (Exception e)
 		{
