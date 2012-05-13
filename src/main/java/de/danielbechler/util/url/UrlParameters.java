@@ -31,113 +31,113 @@ import java.util.*;
 /** @author Daniel Bechler */
 public final class UrlParameters
 {
-    public static final Charset DEFAULT_CHARSET = Charset.forName("utf-8");
+	public static final Charset DEFAULT_CHARSET = Charset.forName("utf-8");
 
-    private final Map<String, String> parameters = new TreeMap<String, String>();
+	private final Map<String, String> parameters = new TreeMap<String, String>();
 
-    public UrlParameters set(final java.lang.String name, final String value)
-    {
-        if (value != null)
-        {
-            parameters.put(name, value);
-        }
-        else
-        {
-            parameters.remove(name);
-        }
-        return this;
-    }
+	public UrlParameters set(final java.lang.String name, final String value)
+	{
+		if (value != null)
+		{
+			parameters.put(name, value);
+		}
+		else
+		{
+			parameters.remove(name);
+		}
+		return this;
+	}
 
-    public boolean has(final String name)
-    {
-        return parameters.containsKey(name);
-    }
+	public boolean has(final String name)
+	{
+		return parameters.containsKey(name);
+	}
 
-    public String get(final String name)
-    {
-        return parameters.get(name);
-    }
+	public String get(final String name)
+	{
+		return parameters.get(name);
+	}
 
-    public int size()
-    {
-        return parameters.size();
-    }
+	public int size()
+	{
+		return parameters.size();
+	}
 
-    public boolean isEmpty()
-    {
-        return size() == 0;
-    }
+	public boolean isEmpty()
+	{
+		return size() == 0;
+	}
 
-    public Iterable<String> getParameterNames()
-    {
-        return new TreeSet<String>(parameters.keySet());
-    }
+	public Iterable<String> getParameterNames()
+	{
+		return new TreeSet<String>(parameters.keySet());
+	}
 
-    public void merge(final UrlParameters parameters)
-    {
-        if (parameters == null)
-        {
-            return;
-        }
-        for (final String name : parameters.getParameterNames())
-        {
-            set(name, parameters.get(name));
-        }
-    }
+	public void merge(final UrlParameters parameters)
+	{
+		if (parameters == null)
+		{
+			return;
+		}
+		for (final String name : parameters.getParameterNames())
+		{
+			set(name, parameters.get(name));
+		}
+	}
 
-    public String toQueryString(final Charset charset)
-    {
-        final StringBuilder sb = new StringBuilder();
-        final Iterator<String> namesIterator = getParameterNames().iterator();
-        while (namesIterator.hasNext())
-        {
-            final String name = namesIterator.next();
-            final String value = get(name);
-            sb.append(encodedKeyValueStringOf(name, value, charset));
-            if (namesIterator.hasNext())
-            {
-                sb.append('&');
-            }
-        }
-        return sb.toString();
-    }
+	public String toQueryString(final Charset charset)
+	{
+		final StringBuilder sb = new StringBuilder();
+		final Iterator<String> namesIterator = getParameterNames().iterator();
+		while (namesIterator.hasNext())
+		{
+			final String name = namesIterator.next();
+			final String value = get(name);
+			sb.append(encodedKeyValueStringOf(name, value, charset));
+			if (namesIterator.hasNext())
+			{
+				sb.append('&');
+			}
+		}
+		return sb.toString();
+	}
 
-    private static String encodedKeyValueStringOf(final String name,
-                                                  final String value,
-                                                  final Charset charset)
-    {
-        final String encodedValue;
-        if (StringUtils.hasText(value))
-        {
-            encodedValue = encode(value, charset.name());
-        }
-        else
-        {
-            encodedValue = "";
-        }
-        return new StringBuilder(name).append('=').append(encodedValue).toString();
-    }
+	private static String encodedKeyValueStringOf(final String name,
+												  final String value,
+												  final Charset charset)
+	{
+		final String encodedValue;
+		if (StringUtils.hasText(value))
+		{
+			encodedValue = encode(value, charset.name());
+		}
+		else
+		{
+			encodedValue = "";
+		}
+		return new StringBuilder(name).append('=').append(encodedValue).toString();
+	}
 
-    private static String encode(final String value, final String encoding)
-    {
-        try
-        {
-            return URLEncoder.encode(value, encoding);
-        }
-        catch (UnsupportedEncodingException e)
-        {
-            throw new IllegalArgumentException("The given encoding is not supported.", e);
-        }
-    }
+	private static String encode(final String value, final String encoding)
+	{
+		try
+		{
+			return URLEncoder.encode(value, encoding);
+		}
+		catch (UnsupportedEncodingException e)
+		{
+			throw new IllegalArgumentException("The given encoding is not supported.", e);
+		}
+	}
 
-    @Override
-    public String toString()
-    {
-        return toQueryString(DEFAULT_CHARSET);
-    }
+	@Override
+	public String toString()
+	{
+		return toQueryString(DEFAULT_CHARSET);
+	}
 
-    public String toString(final Charset charset)
-    {
-        return toQueryString(charset);
-    }
+	public String toString(final Charset charset)
+	{
+		return toQueryString(charset);
+	}
 }

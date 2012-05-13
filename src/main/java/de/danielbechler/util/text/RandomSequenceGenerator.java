@@ -20,26 +20,26 @@ import java.util.*;
 /** @author Daniel Bechler */
 final class RandomSequenceGenerator
 {
-    public static final String DEFAULT_ALPHABET =
-            "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+	public static final String DEFAULT_ALPHABET =
+			"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
-    private RandomSequenceGenerator()
-    {
-    }
+	private RandomSequenceGenerator()
+	{
+	}
 
-    public static String generate(final int length)
-    {
-        return generate(length, DEFAULT_ALPHABET);
-    }
+	public static String generate(final int length)
+	{
+		return generate(length, DEFAULT_ALPHABET);
+	}
 
-    public static String generate(final int length, final CharSequence alphabet)
-    {
-        final Random random = new Random(System.currentTimeMillis());
-        final StringBuilder sb = new StringBuilder(length);
-        for (int i = 0; i < length; i++)
-        {
-            sb.append(alphabet.charAt(random.nextInt(alphabet.length())));
-        }
-        return sb.toString();
-    }
+	public static String generate(final int length, final CharSequence alphabet)
+	{
+		final Random random = new Random(System.currentTimeMillis());
+		final StringBuilder sb = new StringBuilder(length);
+		for (int i = 0; i < length; i++)
+		{
+			sb.append(alphabet.charAt(random.nextInt(alphabet.length())));
+		}
+		return sb.toString();
+	}
 }
