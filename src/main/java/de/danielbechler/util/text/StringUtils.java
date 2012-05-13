@@ -73,7 +73,8 @@ public class StringUtils
 	}
 
 	/**
-	 * Converts an optionally camel-cased character sequence (e.g. ThisIsSparta) into underscore-case (e.g. this_is_sparta).
+	 * Converts an optionally camel-cased character sequence (e.g. ThisIsSparta) into underscore-case (e.g.
+	 * this_is_sparta).
 	 *
 	 * @param s The text to convert.
 	 *
@@ -130,7 +131,8 @@ public class StringUtils
 	}
 
 	/**
-	 * Same as {@link #join(String, Object...)} but with a {@link java.util.Collection} instead of an Array for the elements.
+	 * Same as {@link #join(String, Object...)} but with a {@link java.util.Collection} instead of an Array for
+	 * the elements.
 	 *
 	 * @see #join(String, java.util.Collection)
 	 */
