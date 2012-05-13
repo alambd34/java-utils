@@ -20,21 +20,21 @@ import de.danielbechler.util.text.*;
 /** @author Daniel Bechler */
 public final class MD5
 {
-	private MD5()
-	{
-	}
+    private MD5()
+    {
+    }
 
-	public static String forString(final String text)
-	{
-		if (StringUtils.isEmpty(text))
-		{
-			throw new IllegalArgumentException();
-		}
-		return HashCodeBuilder.md5(text);
-	}
+    public static String forString(final String text)
+    {
+        if (StringUtils.isEmpty(text))
+        {
+            throw new IllegalArgumentException();
+        }
+        return HashCodeBuilder.md5(text);
+    }
 
-	public static String forBytes(final byte[] bytes)
-	{
-		return HashCodeBuilder.md5(bytes);
-	}
+    public static String forBytes(final byte[] bytes)
+    {
+        return HashCodeBuilder.md5(bytes);
+    }
 }

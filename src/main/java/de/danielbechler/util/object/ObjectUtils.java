@@ -19,20 +19,20 @@ package de.danielbechler.util.object;
 /** @author Daniel Bechler */
 public final class ObjectUtils
 {
-	private ObjectUtils()
-	{
-	}
+    private ObjectUtils()
+    {
+    }
 
-	public static boolean isEqual(final Object a, final Object b)
-	{
-		if (a != null)
-		{
-			return a.equals(b);
-		}
-		else if (b != null)
-		{
-			return b.equals(a);
-		}
-		return true;
-	}
+    public static boolean isEqual(final Object a, final Object b)
+    {
+        if (a != null)
+        {
+            return a.equals(b);
+        }
+        else if (b != null)
+        {
+            return b.equals(a);
+        }
+        return true;
+    }
 }

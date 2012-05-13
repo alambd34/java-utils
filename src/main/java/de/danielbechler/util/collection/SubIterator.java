@@ -23,78 +23,78 @@ import java.util.*;
 /** @author Daniel Bechler */
 public final class SubIterator<T> implements Iterator<T>
 {
-	private final Iterator<? extends T> delegate;
-	private final int first;
-	private final int count;
+    private final Iterator<? extends T> delegate;
+    private final int first;
+    private final int count;
 
-	private int index;
-	private T next;
-	private boolean awaitingCallToNext;
+    private int index;
+    private T next;
+    private boolean awaitingCallToNext;
 
-	public SubIterator(final Iterator<? extends T> delegate, final int first, final int count)
-	{
-		Assert.notNull(delegate, "delegate");
-		Assert.greaterOrEqual(0, first, "first");
-		Assert.greaterOrEqual(0, count, "count");
-		this.delegate = delegate;
-		this.first = first;
-		this.count = count;
-	}
+    public SubIterator(final Iterator<? extends T> delegate, final int first, final int count)
+    {
+        Assert.notNull(delegate, "delegate");
+        Assert.greaterOrEqual(0, first, "first");
+        Assert.greaterOrEqual(0, count, "count");
+        this.delegate = delegate;
+        this.first = first;
+        this.count = count;
+    }
 
-	@Override
-	public boolean hasNext()
-	{
-		// check if the item from the previous call to hasNext() has already been retrieved
-		if (awaitingCallToNext)
-		{
-			return true;
-		}
+    @Override
+    public boolean hasNext()
+    {
+        // check if the item from the previous call to hasNext() has already been retrieved
+        if (awaitingCallToNext)
+        {
+            return true;
+        }
 
-		// skip ahead until first requested item is reached
-		while (index < first)
-		{
-			if (delegate.hasNext())
-			{
-				delegate.next();
-				index++;
-			}
-			else
-			{
-				return false;
-			}
-		}
+        // skip ahead until first requested item is reached
+        while (index < first)
+        {
+            if (delegate.hasNext())
+            {
+                delegate.next();
+                index++;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
-		if (getReturnedCount() < count && delegate.hasNext())
-		{
-			next = delegate.next();
-			awaitingCallToNext = true;
-			index++;
-			return true;
-		}
+        if (getReturnedCount() < count && delegate.hasNext())
+        {
+            next = delegate.next();
+            awaitingCallToNext = true;
+            index++;
+            return true;
+        }
 
-		awaitingCallToNext = false;
-		return false;
-	}
+        awaitingCallToNext = false;
+        return false;
+    }
 
-	private int getReturnedCount()
-	{
-		return index - first;
-	}
+    private int getReturnedCount()
+    {
+        return index - first;
+    }
 
-	@Override
-	public T next()
-	{
-		if (awaitingCallToNext || hasNext())
-		{
-			awaitingCallToNext = false;
-			return next;
-		}
-		throw new NoSuchElementException();
-	}
+    @Override
+    public T next()
+    {
+        if (awaitingCallToNext || hasNext())
+        {
+            awaitingCallToNext = false;
+            return next;
+        }
+        throw new NoSuchElementException();
+    }
 
-	@Override
-	public void remove()
-	{
-		delegate.remove();
-	}
+    @Override
+    public void remove()
+    {
+        delegate.remove();
+    }
 }

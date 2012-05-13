@@ -25,30 +25,30 @@ import java.util.*;
  */
 public abstract class AdapterIterator<I, O> implements Iterator<O>
 {
-	private final Iterator<? extends I> delegate;
+    private final Iterator<? extends I> delegate;
 
-	public AdapterIterator(final Iterator<? extends I> delegate)
-	{
-		this.delegate = (delegate == null) ? CollectionUtils.<I>emptyIterator() : delegate;
-	}
+    public AdapterIterator(final Iterator<? extends I> delegate)
+    {
+        this.delegate = (delegate == null) ? CollectionUtils.<I>emptyIterator() : delegate;
+    }
 
-	@Override
-	public boolean hasNext()
-	{
-		return delegate.hasNext();
-	}
+    @Override
+    public boolean hasNext()
+    {
+        return delegate.hasNext();
+    }
 
-	@Override
-	public O next()
-	{
-		return adapt(delegate.next());
-	}
+    @Override
+    public O next()
+    {
+        return adapt(delegate.next());
+    }
 
-	protected abstract O adapt(final I item);
+    protected abstract O adapt(final I item);
 
-	@Override
-	public void remove()
-	{
-		delegate.remove();
-	}
+    @Override
+    public void remove()
+    {
+        delegate.remove();
+    }
 }

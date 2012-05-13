@@ -19,21 +19,21 @@ package de.danielbechler.util.exception;
 /** @author Daniel Bechler */
 public class ExceptionUtils
 {
-	private ExceptionUtils()
-	{
-	}
+    private ExceptionUtils()
+    {
+    }
 
-	public static RuntimeException escalate(final Exception e)
-	{
-		if (e instanceof RuntimeException)
-		{
-			return (RuntimeException) e;
-		}
-		return new RuntimeException(e);
-	}
+    public static RuntimeException escalate(final Exception e)
+    {
+        if (e instanceof RuntimeException)
+        {
+            return (RuntimeException) e;
+        }
+        return new RuntimeException(e);
+    }
 
-	public static RuntimeException escalate(final String message, final Exception e)
-	{
-		return new RuntimeException(message, e);
-	}
+    public static RuntimeException escalate(final String message, final Exception e)
+    {
+        return new RuntimeException(message, e);
+    }
 }

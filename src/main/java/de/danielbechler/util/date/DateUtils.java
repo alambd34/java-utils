@@ -22,64 +22,64 @@ import java.util.*;
 /** @author Daniel Bechler */
 public final class DateUtils
 {
-	private static final TimeZone UTC = TimeZone.getTimeZone("UTC");
+    private static final TimeZone UTC = TimeZone.getTimeZone("UTC");
 
-	private DateUtils()
-	{
-	}
+    private DateUtils()
+    {
+    }
 
-	/**
-	 * Creates an ISO 8601 compliant {@link java.text.DateFormat} using the UTC time zone.
-	 * <p/>
-	 * Example: 2012-05-13T14:56:15Z
-	 *
-	 * @return
-	 */
-	public static DateFormat getDateTimeUTCFormat()
-	{
-		@SuppressWarnings({"SimpleDateFormatWithoutLocale"})
-		final DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-		format.setTimeZone(UTC);
-		return format;
-	}
+    /**
+     * Creates an ISO 8601 compliant {@link java.text.DateFormat} using the UTC time zone.
+     * <p/>
+     * Example: 2012-05-13T14:56:15Z
+     *
+     * @return
+     */
+    public static DateFormat getDateTimeUTCFormat()
+    {
+        @SuppressWarnings({"SimpleDateFormatWithoutLocale"})
+        final DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+        format.setTimeZone(UTC);
+        return format;
+    }
 
-	/**
-	 * Creates an (almost) ISO 8601 compliant {@link java.text.DateFormat} using the UTC time zone. It takes the
-	 * liberty to add the milliseconds to the formatted string.
-	 * <p/>
-	 * Example: 2012-05-13T14:56:15.123Z
-	 *
-	 * @return
-	 */
-	public static DateFormat getDateTimeMillisecondsUTCFormat()
-	{
-		@SuppressWarnings({"SimpleDateFormatWithoutLocale"})
-		final DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
-		format.setTimeZone(TimeZone.getTimeZone("UTC"));
-		return format;
-	}
+    /**
+     * Creates an (almost) ISO 8601 compliant {@link java.text.DateFormat} using the UTC time zone. It takes the
+     * liberty to add the milliseconds to the formatted string.
+     * <p/>
+     * Example: 2012-05-13T14:56:15.123Z
+     *
+     * @return
+     */
+    public static DateFormat getDateTimeMillisecondsUTCFormat()
+    {
+        @SuppressWarnings({"SimpleDateFormatWithoutLocale"})
+        final DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        format.setTimeZone(TimeZone.getTimeZone("UTC"));
+        return format;
+    }
 
-	public static Date getDateFromDateTimeUTCFormat(final String dateString)
-	{
-		try
-		{
-			return getDateTimeUTCFormat().parse(dateString);
-		}
-		catch (ParseException e)
-		{
-			throw new RuntimeException(e);
-		}
-	}
+    public static Date getDateFromDateTimeUTCFormat(final String dateString)
+    {
+        try
+        {
+            return getDateTimeUTCFormat().parse(dateString);
+        }
+        catch (ParseException e)
+        {
+            throw new RuntimeException(e);
+        }
+    }
 
-	public static Date getDateFromDateTimeMillisecondsUTCFormat(final String dateString)
-	{
-		try
-		{
-			return getDateTimeMillisecondsUTCFormat().parse(dateString);
-		}
-		catch (ParseException e)
-		{
-			throw new RuntimeException(e);
-		}
-	}
+    public static Date getDateFromDateTimeMillisecondsUTCFormat(final String dateString)
+    {
+        try
+        {
+            return getDateTimeMillisecondsUTCFormat().parse(dateString);
+        }
+        catch (ParseException e)
+        {
+            throw new RuntimeException(e);
+        }
+    }
 }
