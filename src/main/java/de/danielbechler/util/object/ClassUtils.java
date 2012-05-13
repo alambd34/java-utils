@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package de.danielbechler.utils;
+package de.danielbechler.util.object;
 
 import org.slf4j.*;
 
@@ -22,11 +22,11 @@ import java.net.*;
 import java.util.*;
 
 /** @author Daniel Bechler */
-public final class Classes
+public final class ClassUtils
 {
-	private static final Logger logger = LoggerFactory.getLogger(Classes.class);
+	private static final Logger logger = LoggerFactory.getLogger(ClassUtils.class);
 
-	private Classes()
+	private ClassUtils()
 	{
 	}
 

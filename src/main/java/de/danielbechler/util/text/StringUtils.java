@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-package de.danielbechler.utils;
+package de.danielbechler.util.text;
 
 import java.util.*;
 import java.util.regex.*;
 
 /** @author Daniel Bechler */
-public class Strings
+public class StringUtils
 {
 	private static final Pattern LINE_BREAK_PATTERN = Pattern.compile("\\s*\\n\\s*");
 
-	private Strings()
+	private StringUtils()
 	{
 	}
 
@@ -73,7 +73,7 @@ public class Strings
 	}
 
 	/**
-	 * Converts a camel-cased character sequence (e.g. ThisIsSparta) into underscore-case (e.g. this_is_sparta).
+	 * Converts an optionally camel-cased character sequence (e.g. ThisIsSparta) into underscore-case (e.g. this_is_sparta).
 	 *
 	 * @param s The text to convert.
 	 *
@@ -152,5 +152,15 @@ public class Strings
 			return matcher.replaceAll(" \\\\ ");
 		}
 		return null;
+	}
+
+	public static String randomSequence(final int length)
+	{
+		return RandomSequenceGenerator.generate(length);
+	}
+
+	public static String randomSequence(final int length, final CharSequence alphabet)
+	{
+		return RandomSequenceGenerator.generate(length, alphabet);
 	}
 }

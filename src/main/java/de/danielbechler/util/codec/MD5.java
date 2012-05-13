@@ -13,27 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package de.danielbechler.util.codec;
 
-package de.danielbechler.utils;
+import de.danielbechler.util.text.StringUtils;
 
 /** @author Daniel Bechler */
-public class Exceptions
+public final class MD5
 {
-	private Exceptions()
+	private MD5()
 	{
 	}
 
-	public static RuntimeException escalate(final Exception e)
+	public static String forString(final String text)
 	{
-		if (e instanceof RuntimeException)
+		if (StringUtils.isEmpty(text))
 		{
-			return (RuntimeException) e;
+			throw new IllegalArgumentException();
 		}
-		return new RuntimeException(e);
+		return HashCodeBuilder.md5(text);
 	}
 
-	public static RuntimeException escalate(final String message, final Exception e)
+	public static String forBytes(final byte[] bytes)
 	{
-		return new RuntimeException(message, e);
+		return HashCodeBuilder.md5(bytes);
 	}
 }

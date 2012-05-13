@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package de.danielbechler.utils;
+package de.danielbechler.util.collection;
 
 import java.util.*;
 
 /** @author Daniel Bechler */
-public class Collections
+public class CollectionUtils
 {
-	private Collections()
+	private CollectionUtils()
 	{
 	}
 
@@ -141,5 +141,10 @@ public class Collections
 			}
 		}
 		return null;
+	}
+
+	public static <T> Iterator<T> emptyIterator()
+	{
+		return EmptyIterator.getInstance();
 	}
 }

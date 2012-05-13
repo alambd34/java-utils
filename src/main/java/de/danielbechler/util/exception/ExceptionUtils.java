@@ -14,25 +14,26 @@
  * limitations under the License.
  */
 
-package de.danielbechler.utils;
+package de.danielbechler.util.exception;
 
 /** @author Daniel Bechler */
-public class Objects
+public class ExceptionUtils
 {
-	private Objects()
+	private ExceptionUtils()
 	{
 	}
 
-	public static boolean isEqual(final Object a, final Object b)
+	public static RuntimeException escalate(final Exception e)
 	{
-		if (a != null)
+		if (e instanceof RuntimeException)
 		{
-			return a.equals(b);
+			return (RuntimeException) e;
 		}
-		else if (b != null)
-		{
-			return b.equals(a);
-		}
-		return true;
+		return new RuntimeException(e);
+	}
+
+	public static RuntimeException escalate(final String message, final Exception e)
+	{
+		return new RuntimeException(message, e);
 	}
 }
